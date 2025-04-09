@@ -20,7 +20,9 @@ export const agent = new Agentica({
       name: "Slack Connector",
       protocol: "class",
       application: typia.llm.application<SlackService, "chatgpt">(),
-      execute: new SlackService(),
+      execute: new SlackService({
+        slackToken: process.env.SLACK_TOKEN!,
+      }),
     },
   ],
 });
